@@ -45,6 +45,24 @@
     text-decoration: underline;
     color: #7dd3fc;
   }
+  #game button {
+  background: none;
+  color: #38bdf8;
+  border: 1px solid #38bdf8;
+  margin: 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-family: monospace;
+}
+
+#game button:hover {
+  background: #38bdf8;
+  color: black;
+}
+
+#game {
+  margin-top: 20px;
+}
     @media (max-width: 768px) {
       body {
         margin: 20 px;
@@ -124,6 +142,55 @@
       </a>
     </li>
   </ul>
+  h3>Game</h3>
+
+<div id="game">
+  <p id="gameText">
+    > ./start_game<br><br>
+    Level 1: Incoming bug...<br>
+    Choose your action:<br>
+    [1] Panic<br>
+    [2] Debug<br>
+    [3] Ignore
+  </p>
+
+  <button onclick="choose(1)">1</button>
+  <button onclick="choose(2)">2</button>
+  <button onclick="choose(3)">3</button>
+</div>
+<script>
+  let level = 1;
+  
+  function choose(option) {
+    const text = document.getElementById("gameText");
+  
+    if (level === 1) {
+      if (option === 2) {
+        text.innerHTML = "✔ Level 1 cleared<br>Unlocked: I debug problems instead of guessing.<br><br>Level 2: Learning speed test...<br>Choose your action:<br>[1] Avoid challenges<br>[2] Learn fast<br>[3] Quit";
+        level = 2;
+      } else {
+        text.innerHTML = "> ./start_game<br><br>❌ Wrong choice. Try again.<br><br>Level 1: Incoming bug...<br>Choose your action:<br>[1] Panic<br>[2] Debug<br>[3] Ignore";
+      }
+    }
+  
+    else if (level === 2) {
+      if (option === 2) {
+        text.innerHTML = "✔ Level 2 cleared<br>Unlocked: I learn fast and build as I go.<br><br>Final Level: Mindset check...<br>Choose your action:<br>[1] Wait for perfect<br>[2] Test & improve<br>[3] Give up";
+        level = 3;
+      } else {
+        text.innerHTML = "❌ Try again.<br><br>Level 2: Learning speed test...<br>Choose your action:<br>[1] Avoid challenges<br>[2] Learn fast<br>[3] Quit";
+      }
+    }
+  
+    else if (level === 3) {
+      if (option === 2) {
+        text.innerHTML = "🎉 All levels cleared.<br><br>Reasons to hire Deisy unlocked:<br>✔ Persistent problem solver<br>✔ Fast learner<br>✔ Builder mindset";
+      } else {
+        text.innerHTML = "❌ Try again.<br><br>Final Level: Mindset check...<br>Choose your action:<br>[1] Wait for perfect<br>[2] Test & improve<br>[3] Give up";
+      }
+    }
+  }
+  </script>
 
 </body>
 </html>
